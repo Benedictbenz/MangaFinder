@@ -1,0 +1,27 @@
+{
+  "name": "mangafinder",
+  "version": "1.0.0",
+  "description": "Initialize Creation for MangaFinder with API, For Practice",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benedictbenz/MangaFinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benedictbenz/MangaFinder/issues"
+  },
+  "homepage": "https://github.com/Benedictbenz/MangaFinder#readme",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "parser": "^0.1.4"
+  }
+}
