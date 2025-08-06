@@ -2,17 +2,22 @@
 
 <body>
     
+<p><%= content %></p>
+<hr>
 
-<h1><%= content %></h1>
-<h2><%= content2 %></h2>
-<h2>Cover ID: <%= content3 %></h2>
+<h1><%= titles[0].title %></h1>
 
-<!-- <img src="content3%>" alt="testing"> -->
-
+<hr>
+<% for(let i = 1; i <titles.length; i++){%>
+    <p><%=titles[i].title%></p>
+    <% } %>
 </body>
 </html>
+<hr>
 
+<a href="<%=content%>" target="_blank"><img src="<%= coverImage %>" alt="coverimage"></a>
 
+<p><%= synopsis %></p>
 
 
 
