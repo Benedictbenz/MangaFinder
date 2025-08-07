@@ -1,23 +1,34 @@
-<% include("partials/header.ejs") %>
+<%- include("partials/header.ejs") %>
 
-<body>
-    
-<p><%= content %></p>
+
+<h1 class="test" id="test">test</h1>
+<form action="/" method="get">
+    <button type="submit">Random</button>
+</form>
+
+<div class="body_container">
+    <div>
+        <p class="test"><%= content %></p>
+    </div>
 <hr>
-
-<h1><%= titles[0].title %></h1>
-
+    <div>
+        <h1><%= titles[0].title %></h1>
+    </div>
+    <div>
+        <hr><p>
+        <% for(let i = 1; i <titles.length; i++){%>
+            <span><%=titles[i].title%>, </span>
+            <% } %>
+        </p>
 <hr>
-<% for(let i = 1; i <titles.length; i++){%>
-    <p><%=titles[i].title%></p>
-    <% } %>
-</body>
-</html>
-<hr>
-
-<a href="<%=content%>" target="_blank"><img src="<%= coverImage %>" alt="coverimage"></a>
-
-<p><%= synopsis %></p>
+    </div>
+    <a href="<%=content%>" target="_blank"><img src="<%= coverImage %>" alt="coverimage"></a>
+    <% if(locals.synopsis){ %>
+    <p>Synopsis: <%= synopsis %></p>
+    <% } else{ %>
+        <p>Synopsis: None</p>
+        <% } %>
+</div>
 
 
 
@@ -25,9 +36,4 @@
 
 
 
-
-
-
-
-
-<% include("partials/footer.ejs") %>
+<%- include("partials/footer.ejs") %>
