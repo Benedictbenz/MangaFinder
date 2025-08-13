@@ -25,7 +25,7 @@
  }
 
  /* links */
- a{
+ nav > a{
     padding-left: 20px;
 
     color:  #FF7F67;
@@ -44,14 +44,7 @@ h1, p{
   font-family: "Lilita One", sans-serif;
   text-decoration: #FF7F67;
  }
-
- .searchDesign{
-  font-family: "Lilita One", sans-serif;;
-  size: 35px;
-  height: 30px;
-  text-align: center;
-  border-radius: 25px;
- }
+ 
 
 /* 
 =================
@@ -95,3 +88,33 @@ h1, p{
     align-content: center;
     height: 100vh;
 } 
+
+ .body_container_search{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+
+  /* height: 100vh; */
+ }
+
+.body_container > h1 , .body_container >p{
+  text-shadow: 2px 2px 2px white;
+}
+
+
+/* 
+~~~~~~~~~~~~~~~~
+Design for the Search Bar
+~~~~~~~~~~~~~~~~
+*/
+
+ .searchDesign{
+  font-family: "Lilita One", sans-serif;;
+  font-size: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 25px;
+  margin: 40vh;
+ }

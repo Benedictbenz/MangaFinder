@@ -1,14 +1,40 @@
 <%- include("partials/header.ejs") %>
 
-<div class="body_container">
+<div class="body_container_search">
+    <!-- 
+    ==========================
+    SEARCH RESULT 
+    ==========================
+    -->
     <% if(locals.itemsearched){%>
 
-        <h1>Searched! <%= locals.itemsearched %></h1>
+        <h1>Search result for: <%= locals.itemsearched %></h1>
+        <p>
+            Page: <%= searchResult.pagination.current_page %> 
+            <br>
+            Last Page: <%= searchResult.pagination.last_visible_page %>
+<br>
+        </p>
 
+        <ul>
+         <% searchResult.data.forEach(item => { %>
+            <li>
+                <%= item.title %>
+                <br>
+                <a href="<%= item.url %>" target="_blank">
+                    <img src="<%=item.images.jpg.large_image_url%>" alt="<%= item.title %>">
+                </a>
+            </li>
+           <% }); %>
+        </ul>   
+    
+
+    <!-- 
+    ==========================
+    SEARCH BAR
+    ==========================
+     -->
     <%} else {%>
-
-    <h1>Search!</h1>
-    <p style="color: white;">Placeholder for the items</p>
     <form action="/search" method="post">
         <input type="text" id="searchquery" name="searchquery" placeholder="Search" class="searchDesign">
     </form>

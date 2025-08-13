@@ -12,7 +12,7 @@ app.use(express.static("public"));
 const API_URL = "https://api.jikan.moe/v4";
 
 //================ 
-// HOME QUERY
+// HOME
 //================
 app.get("/", async(req,res)=>{
     try{
@@ -54,9 +54,11 @@ app.get("/random", async(req,res)=>{
 //================
 // SEARCH QUERY
 //================
+
+//The search bar
 app.get("/search", async(req,res)=>{
     try{
-        const result = await axios.get(API_URL+"random/anime");
+        const result = await axios.get(API_URL+"/random/anime");
 
         res.render("search.ejs");
 
@@ -66,19 +68,29 @@ app.get("/search", async(req,res)=>{
 
 });
 
+//The search Result
 app.post("/search", async(req,res)=>{
-    var search = req.body["searchquery"];
-    // try{
-    //     const result = await axios.get(API_URL+"random/anime");
+    var searchrQuery = req.body["searchquery"];
+    
+    console.log(`Title: ${searchrQuery}`);
+    try{
+        const result = await axios.get(API_URL+`/anime`,{
+            params:{
+                q: searchrQuery,
+                sfw: true
+            }
+        });
         
+        // console.log(searchResult.data);
 
-    //     res.render("search.ejs",{itemsearched: search});
+        res.render("search.ejs",{
+            itemsearched: searchrQuery,
+            searchResult: result.data
+        });
 
-    // } catch(error){
-    //     res.render("search.ejs", {content: error.response});
-    // }
-    res.render("search.ejs",{itemsearched: search});
-
+    }catch(err){
+        res.render("search.ejs",{content: error.response});
+    }
 });
 
 app.listen(port, ()=>{
