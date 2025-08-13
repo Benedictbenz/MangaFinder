@@ -1,6 +1,7 @@
- /*   =================
-      HEADER
-      =================
+ /* 
+ =================
+ >>>>>HEADER<<<<<
+ =================
   */
  html{
     background-color: #7C444F;
@@ -23,15 +24,40 @@
 
  }
 
- a, h1, p{
-  padding: 0;
-   font-family: "Lilita One", sans-serif;
+ /* links */
+ a{
+    padding-left: 20px;
+
+    color:  #FF7F67;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px black;
+    display: inline-block;
  }
 
- /*   =================
-      FOOTER
-      =================
-  */
+ a:hover{
+  transform: translate(-5px,-10px);
+  color:  #F39E60;
+ }
+
+h1, p{
+  padding: 0;
+  font-family: "Lilita One", sans-serif;
+  text-decoration: #FF7F67;
+ }
+
+ .searchDesign{
+  font-family: "Lilita One", sans-serif;;
+  size: 35px;
+  height: 30px;
+  text-align: center;
+  border-radius: 25px;
+ }
+
+/* 
+=================
+>>>>>FOOTER<<<<<
+=================
+*/
 
   .footer{
     background-color: #9F5255;
@@ -42,6 +68,11 @@
     padding: 0px;
 
     border-radius: 25px;
+
+    /*Text*/
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
   }
 
   p{
@@ -49,10 +80,11 @@
    margin: 2px;
   }
 
- /*   =================
-      BODY
-      =================
-  */
+/*    
+==============
+>>>>>BODY<<<<<
+===============
+*/
 
  .body_container{
     display: flex;
@@ -61,12 +93,5 @@
     align-items: center;
     flex-wrap: wrap;
     align-content: center;
+    height: 100vh;
 } 
-
-.test{
-    color: red;
-}
-
-#test{
-    color: blue;
-}

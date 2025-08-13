@@ -16,7 +16,7 @@ const API_URL = "https://api.jikan.moe/v4";
 //================
 app.get("/", async(req,res)=>{
     try{
-        const result = await axios.get(API_URL+"/random/manga",);
+        const result = await axios.get(API_URL+"/random/anime",);
 
         let result2 = result.data.data;
 
@@ -24,10 +24,10 @@ app.get("/", async(req,res)=>{
         const title = result.data.data.titles;
         const image = result.data.data.images.jpg.image_url;
         const synopsis = result2.synopsis;
-        res.render("index.ejs",{content: data,titles:title, coverImage: image,synopsis:synopsis});
+        res.render("home.ejs",{content: data,titles:title, coverImage: image,synopsis:synopsis});
 
     } catch(error){
-        res.render("index.ejs", {content: error.response});
+        res.render("home.ejs", {content: error.response});
     }
 });
 
@@ -54,21 +54,31 @@ app.get("/random", async(req,res)=>{
 //================
 // SEARCH QUERY
 //================
-
-app.get("/random", async(req,res)=>{
+app.get("/search", async(req,res)=>{
     try{
-        const result = await axios.get(API_URL+"/random/manga",);
+        const result = await axios.get(API_URL+"random/anime");
 
-        let result2 = result.data.data;
+        res.render("search.ejs");
 
-        const data = result.data.data.url;
-        const title = result.data.data.titles;
-        const image = result.data.data.images.jpg.image_url;
-        const synopsis = result2.synopsis;
-        res.render("random.ejs",{content: data,titles:title, coverImage: image,synopsis:synopsis});
     } catch(error){
-        res.render("random.ejs", {content: error.response});
+        res.render("search.ejs", {content: error.response});
     }
+
+});
+
+app.post("/search", async(req,res)=>{
+    var search = req.body["searchquery"];
+    // try{
+    //     const result = await axios.get(API_URL+"random/anime");
+        
+
+    //     res.render("search.ejs",{itemsearched: search});
+
+    // } catch(error){
+    //     res.render("search.ejs", {content: error.response});
+    // }
+    res.render("search.ejs",{itemsearched: search});
+
 });
 
 app.listen(port, ()=>{

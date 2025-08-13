@@ -1,0 +1,21 @@
+<%- include("partials/header.ejs") %>
+
+<div class="body_container">
+    <% if(locals.itemsearched){%>
+
+        <h1>Searched! <%= locals.itemsearched %></h1>
+
+    <%} else {%>
+
+    <h1>Search!</h1>
+    <p style="color: white;">Placeholder for the items</p>
+    <form action="/search" method="post">
+        <input type="text" id="searchquery" name="searchquery" placeholder="Search" class="searchDesign">
+    </form>
+
+    <%} %>
+</div>
+
+
+<!-- FOOTER -->
+<%- include("partials/footer.ejs") %>
