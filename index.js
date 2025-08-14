@@ -9,6 +9,11 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const type1 = "/anime";
+const type2 = "/manga";
+
+const currentType = type2;
+
 const API_URL = "https://api.jikan.moe/v4";
 
 //================ 
@@ -16,7 +21,7 @@ const API_URL = "https://api.jikan.moe/v4";
 //================
 app.get("/", async(req,res)=>{
     try{
-        const result = await axios.get(API_URL+"/random/anime",);
+        const result = await axios.get(API_URL+"/random"+currentType);
 
         let result2 = result.data.data;
 
@@ -25,6 +30,7 @@ app.get("/", async(req,res)=>{
         const image = result.data.data.images.jpg.image_url;
         const synopsis = result2.synopsis;
         res.render("home.ejs",{content: data,titles:title, coverImage: image,synopsis:synopsis});
+        
 
     } catch(error){
         res.render("home.ejs", {content: error.response});
@@ -37,7 +43,7 @@ app.get("/", async(req,res)=>{
 
 app.get("/random", async(req,res)=>{
     try{
-        const result = await axios.get(API_URL+"/random/manga",);
+        const result = await axios.get(API_URL+"/random"+currentType);
 
         let result2 = result.data.data;
 
@@ -45,7 +51,13 @@ app.get("/random", async(req,res)=>{
         const title = result.data.data.titles;
         const image = result.data.data.images.jpg.image_url;
         const synopsis = result2.synopsis;
-        res.render("random.ejs",{content: data,titles:title, coverImage: image,synopsis:synopsis});
+
+        res.render("random.ejs",{
+            content: data,titles:title, 
+            coverImage: image,
+            synopsis:synopsis
+        });
+
     } catch(error){
         res.render("random.ejs", {content: error.response});
     }
@@ -54,11 +66,10 @@ app.get("/random", async(req,res)=>{
 //================
 // SEARCH QUERY
 //================
-
-//The search bar
+//The search bar default
 app.get("/search", async(req,res)=>{
     try{
-        const result = await axios.get(API_URL+"/random/anime");
+        const result = await axios.get(API_URL+"/random+"+currentType);
 
         res.render("search.ejs");
 
@@ -72,16 +83,21 @@ app.get("/search", async(req,res)=>{
 app.post("/search", async(req,res)=>{
     var searchrQuery = req.body["searchquery"];
     
+    //Console Check
+    console.log("======================")
     console.log(`Title: ${searchrQuery}`);
+
+
     try{
-        const result = await axios.get(API_URL+`/anime`,{
+        const result = await axios.get(API_URL+currentType,{
             params:{
                 q: searchrQuery,
                 sfw: true
             }
         });
         
-        // console.log(searchResult.data);
+        //datacheck
+        // console.log("Title:"+result.data.data[0].title);
 
         res.render("search.ejs",{
             itemsearched: searchrQuery,

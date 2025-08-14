@@ -37,6 +37,7 @@
  a:hover{
   transform: translate(-5px,-10px);
   color:  #F39E60;
+  transition: transform 0.3s ease;
  }
 
 h1, p{
@@ -96,14 +97,55 @@ h1, p{
   align-items: center;
   align-content: center;
 
-  /* height: 100vh; */
+   /* height: 100vh;  */
  }
 
-.body_container > h1 , .body_container >p{
+.body_container > h2 , .body_container >p{
   text-shadow: 2px 2px 2px white;
 }
 
 
+/* SEARCH RESULT */
+ .searchResult_container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-content: flex-start;
+ }
+
+ .anime_manga_box{
+  margin: 30px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  
+
+  height: 100%;
+  width: 200px;
+
+  background-color: #D9D9D9;
+  border-radius: 10px;
+ }
+
+.anime_manga_box:hover{
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+  box-shadow: 0px 0px 10px #ff2802;
+}
+
+.anime_manga_image{
+  height: 300px;
+  width: 100%;
+  border-radius: 5px;
+ }
+
+ .anime_manga_box > p{
+  padding: 5px;
+  text-align:center;
+ }
+ 
 /* 
 ~~~~~~~~~~~~~~~~
 Design for the Search Bar
@@ -118,3 +160,5 @@ Design for the Search Bar
   border-radius: 25px;
   margin: 40vh;
  }
+
+

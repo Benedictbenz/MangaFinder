@@ -7,28 +7,29 @@
     ==========================
     -->
     <% if(locals.itemsearched){%>
+        <h1>Search result for: <%= itemsearched %></h1>
+        <p>Results: <%= searchResult.pagination.items.total  %></p>
+        
 
-        <h1>Search result for: <%= locals.itemsearched %></h1>
+        <div class="searchResult_container">
+            <% searchResult.data.forEach(item => { %>
+            <div class="anime_manga_box">
+                <img src="<%=item.images.jpg.image_url%>" class="anime_manga_image">
+                <p >
+                <%= item.title %> 
+                </p>
+            </div>
+            <% }); %>
+        </div>
+
+
+        
         <p>
             Page: <%= searchResult.pagination.current_page %> 
             <br>
             Last Page: <%= searchResult.pagination.last_visible_page %>
-<br>
+            <br>
         </p>
-
-        <ul>
-         <% searchResult.data.forEach(item => { %>
-            <li>
-                <%= item.title %>
-                <br>
-                <a href="<%= item.url %>" target="_blank">
-                    <img src="<%=item.images.jpg.large_image_url%>" alt="<%= item.title %>">
-                </a>
-            </li>
-           <% }); %>
-        </ul>   
-    
-
     <!-- 
     ==========================
     SEARCH BAR
@@ -38,7 +39,6 @@
     <form action="/search" method="post">
         <input type="text" id="searchquery" name="searchquery" placeholder="Search" class="searchDesign">
     </form>
-
     <%} %>
 </div>
 
