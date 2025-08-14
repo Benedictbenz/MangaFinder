@@ -12,7 +12,7 @@ app.use(express.static("public"));
 const type1 = "/anime";
 const type2 = "/manga";
 
-const currentType = type2;
+const currentType = type1;
 
 const API_URL = "https://api.jikan.moe/v4";
 
@@ -29,7 +29,12 @@ app.get("/", async(req,res)=>{
         const title = result.data.data.titles;
         const image = result.data.data.images.jpg.image_url;
         const synopsis = result2.synopsis;
-        res.render("home.ejs",{content: data,titles:title, coverImage: image,synopsis:synopsis});
+        res.render("home.ejs",{
+            content: data,
+            titles:title, 
+            coverImage: image,
+            synopsis:synopsis
+        });
         
 
     } catch(error){
@@ -40,7 +45,6 @@ app.get("/", async(req,res)=>{
 // ================ 
 // RANDOM QUERY
 // ================
-
 app.get("/random", async(req,res)=>{
     try{
         const result = await axios.get(API_URL+"/random"+currentType);
@@ -52,14 +56,14 @@ app.get("/random", async(req,res)=>{
         const image = result.data.data.images.jpg.image_url;
         const synopsis = result2.synopsis;
 
-        res.render("random.ejs",{
+        res.render("viewSelection.ejs",{
             content: data,titles:title, 
             coverImage: image,
             synopsis:synopsis
         });
 
     } catch(error){
-        res.render("random.ejs", {content: error.response});
+        res.render("viewSelection.ejs", {content: error.response});
     }
 });
 
