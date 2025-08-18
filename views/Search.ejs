@@ -24,12 +24,18 @@
 
 
         
-        <p>
-            Page: <%= searchResult.pagination.current_page %> 
-            <br>
-            Last Page: <%= searchResult.pagination.last_visible_page %>
-            <br>
-        </p>
+
+        
+        <% for(index =0; index<searchResult.pagination.last_visible_page; index++){%>
+            <form action="/search" method="post">
+                <input type="hidden" name="searchquery" value="<%= itemsearched %>">
+                <input type="hidden" name="page" value="<%= index+1 %>">
+                <button type="submit"><%= index+1 %></button>
+            </form>
+        <% } %>
+
+
+
     <!-- 
     ==========================
     SEARCH BAR
@@ -37,7 +43,7 @@
      -->
     <%} else {%>
     <form action="/search" method="post">
-        <input type="text" id="searchquery" name="searchquery" placeholder="Search" class="searchDesign">
+        <input type="text" id="searchy" name="searchquery" placeholder="Search" autocomplete="off" class="searchDesign">
     </form>
     <%} %>
 </div>

@@ -85,18 +85,21 @@ app.get("/search", async(req,res)=>{
 
 //The search Result
 app.post("/search", async(req,res)=>{
-    var searchrQuery = req.body["searchquery"];
+    var searchrQuery = req.body.searchquery;
+    var page = req.body.page||1;
     
     //Console Check
     console.log("======================")
     console.log(`Title: ${searchrQuery}`);
+    console.log(`Title: ${page}`);
 
 
     try{
         const result = await axios.get(API_URL+currentType,{
             params:{
                 q: searchrQuery,
-                sfw: true
+                sfw: true,
+                page:page
             }
         });
         
