@@ -13,27 +13,29 @@
 
         <div class="searchResult_container">
             <% searchResult.data.forEach(item => { %>
-            <div class="anime_manga_box">
-                <img src="<%=item.images.jpg.image_url%>" class="anime_manga_image">
-                <p >
-                <%= item.title %> 
-                </p>
-            </div>
+            <form action="/" method="get">  
+                <input type="hidden" name="id" value="">
+                <button type="submit" class="anime_manga_box">
+
+                        <img src="<%=item.images.jpg.image_url%>" class="anime_manga_image">
+                        <p ><%= item.title %></p>
+                </button>
+            </form>
             <% }); %>
         </div>
 
 
         
 
-        
+        <div class="pageNumbers">
         <% for(index =0; index<searchResult.pagination.last_visible_page; index++){%>
             <form action="/search" method="post">
                 <input type="hidden" name="searchquery" value="<%= itemsearched %>">
                 <input type="hidden" name="page" value="<%= index+1 %>">
-                <button type="submit"><%= index+1 %></button>
+                <button type="submit" class="pageNumberStyle"><%= index+1 %></button>
             </form>
         <% } %>
-
+        </div>
 
 
     <!-- 
