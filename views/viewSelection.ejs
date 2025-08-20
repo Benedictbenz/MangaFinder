@@ -1,5 +1,21 @@
 <%- include("partials/header.ejs") %>
+<!--  -->
+<div class="body_container">
+    <div class="cover_container">
+        <img src="<%= coverImage %>" alt="coverimage">
+    </div>
+    <div class="details">
+        <div>
+            <h1><%= titles[0].title %></h1>
+        <% if(locals.synopsis){ %>
+            <p>Synopsis: <%= synopsis %></p>
+            <% } else{ %>
+                <p>Synopsis: None</p>
+        <% } %>
+        </div>
 
+    </div>
+</div>
 <!-- BODY CONTAINER -->
 <div class="body_container">
     <div>
@@ -17,12 +33,11 @@
         </p>
 <hr>
     </div>
-    <a href="<%=content%>" target="_blank"><img src="<%= coverImage %>" alt="coverimage"></a>
     <% if(locals.synopsis){ %>
-    <p>Synopsis: <%= synopsis %></p>
-    <% } else{ %>
-        <p>Synopsis: None</p>
-        <% } %>
+        <p>Synopsis: <%= synopsis %></p>
+        <% } else{ %>
+            <p>Synopsis: None</p>
+    <% } %>
 
 <!-- RANDOM BUTTON -->
 <h1 class="test" id="test">test</h1>
