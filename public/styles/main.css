@@ -40,7 +40,7 @@
   transition: transform 0.3s ease;
  }
 
-h1, p{
+.header > h1, p{
   padding: 0;
   font-family: "Lilita One", sans-serif;
   text-decoration: #FF7F67;
@@ -66,10 +66,10 @@ h1, p{
     /*Text*/
     font-size: 20px;
     color: white;
-    text-shadow: 2px 2px 4px black;
+    text-shadow: 5px 4px 3px black;
   }
 
-  p{
+  .footer > p{
    padding: 5px;
    margin: 2px;
   }
@@ -82,13 +82,17 @@ h1, p{
 
 .body_container{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    /* flex-wrap: wrap; */
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* align-items: center; */
+    flex-wrap: wrap;
     
     height: 100vh;
+    background-color: #E16A54;
+    border-radius: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 } 
 
 .body_container_search{
@@ -105,8 +109,66 @@ h1, p{
   text-shadow: 2px 2px 2px white;
 }
 
+/* 
+===============
+VIEWING RESULT
+===============
+ */
 
-/* SEARCH RESULT */
+.title_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  background-color: #F39E60;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.title_container > h1 , p{
+  padding-left: 10px;
+}
+
+
+.content_container{
+  display: flex;
+  flex-direction: row;
+
+  
+}
+
+.content_container > div{
+
+  background-color: #F39E60;
+  margin: 20px;
+
+  border-radius: 25px;
+}
+
+.cover_container {
+  align-items: center;
+
+  flex-grow: 1;
+  height: 300px;
+  width: 200px;
+}
+
+.cover_container > img {
+  height: 200px;
+  width: 150px;
+  /* border-radius: 10px 10px 0px 0px; */
+}
+
+.details {
+  flex-grow: 6;
+}
+
+
+/* 
+=======================
+SEARCH RESULTS
+=======================
+*/
  .searchResult_container{
   display: flex;
   flex-wrap: wrap;

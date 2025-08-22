@@ -51,13 +51,15 @@ app.get("/random", async(req,res)=>{
 
         let result2 = result.data.data;
 
-        const data = result.data.data.url;
-        const title = result.data.data.titles;
+        const data = result.data.data;
+        const title = result.data.data.title;
         const image = result.data.data.images.jpg.image_url;
         const synopsis = result2.synopsis;
 
         res.render("viewSelection.ejs",{
-            content: data,titles:title, 
+            
+            content: data,
+            title:title, 
             coverImage: image,
             synopsis:synopsis
         });

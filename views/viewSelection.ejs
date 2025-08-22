@@ -1,53 +1,72 @@
 <%- include("partials/header.ejs") %>
-<!--  -->
+<!-- 
+=============
+Viewing Selection
+=============
+-->
 <div class="body_container">
-    <div class="cover_container">
-        <img src="<%= coverImage %>" alt="coverimage">
+
+    <!-- 
+    ~~~~~~~~~
+    TITLE 
+    ~~~~~~~~~
+    -->
+
+    <div class="title_container">
+        <h1>
+            <%= title %>
+        </h1>
+        <p>
+            other titles: <%= content.titles.slice(1).map(items => items.title).join(",") %>
+        </p>
     </div>
-    <div class="details">
-        <div>
-            <h1><%= titles[0].title %></h1>
-        <% if(locals.synopsis){ %>
-            <p>Synopsis: <%= synopsis %></p>
-            <% } else{ %>
+
+    <!-- 
+    ~~~~~~~~
+    Content 
+    ~~~~~~~~
+    -->
+    <div class="content_container">
+
+        <div class="cover_container">
+            <img src="<%= coverImage %>" alt="coverimage">
+        </div>
+
+        <div class="details">
+            <div>
+
+            <!-- Genre -->
+            <% if(locals.content.genres[0]){ %>
+                <p> Genre: <%= content.genres.map(item =>item.name).join(",") %></p>
+                    <% } else{ %>
+                <p> Genre: None </p>
+            <% } %>
+
+            <!-- Studio -->
+            <% if(locals.content.studios[0]){ %>
+                <p> Studio: <%= content.studios[0].name %> </p>
+                    <% } else{ %>
+                <p> Studio: Unkown </p>
+            <% } %>
+
+            <!-- Aired -->
+            <p> Aired: <%= content.aired.string %></p>
+            <!-- Status -->
+             <p> Status: <%= content.status %></p>
+            <!-- MAL SCORE -->
+             <p> MAL Score: <%= content.score %></p>
+
+            <!-- Synopsis -->
+            <% if(locals.synopsis){ %>
+                <p>Synopsis: <%= synopsis %></p>
+                    <% } else{ %>
                 <p>Synopsis: None</p>
-        <% } %>
+            <% } %>
+            </div>
         </div>
 
     </div>
 </div>
-
-<!-- BODY CONTAINER -->
-<div class="body_container">
-    <div>
-        <p class="test"><%= content %></p>
-    </div>
-<hr>
-    <div>
-        <h1><%= titles[0].title %></h1>
-    </div>
-    <div>
-        <hr><p>
-        <% for(let i = 1; i <titles.length; i++){%>
-            <span><%=titles[i].title%>, </span>
-            <% } %>
-        </p>
-<hr>
-    </div>
-    <% if(locals.synopsis){ %>
-        <p>Synopsis: <%= synopsis %></p>
-        <% } else{ %>
-            <p>Synopsis: None</p>
-    <% } %>
-
-<!-- RANDOM BUTTON -->
-<h1 class="test" id="test">test</h1>
-<form action="/random" method="get">
-    <button type="submit">Random</button>
-</form>
-
-</div>
-
 
 
 <!-- FOOTER -->
