@@ -37,7 +37,7 @@ Viewing Selection
 
             <!-- Genre -->
             <% if(locals.content.genres[0]){ %>
-                <p> Genre: <%= content.genres.map(item =>item.name).join(",") %></p>
+                <p> Genre: <%= content.genres.map(item =>item.name).join(" , ") %></p>
                     <% } else{ %>
                 <p> Genre: None </p>
             <% } %>
