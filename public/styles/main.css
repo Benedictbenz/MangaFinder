@@ -82,14 +82,16 @@
 
 .body_container{
     display: inline-block;
-    
+
     height: 100vh;
-    width: 98.5vw;
+  width: 98.5vw;
     
-    background-color: #E16A54;
-    border-radius: 25px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+  background-color: #E16A54;
+  border-radius: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+    
+    
 } 
 
 .body_container_search{
@@ -104,6 +106,24 @@
 
 .body_container > h2 , .body_container >p{
   text-shadow: 2px 2px 2px white;
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+
+  height: 100vh;
+  width: 98.5vw;
+    
+  background-color: #E16A54;
+  border-radius: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
 }
 
 /* 

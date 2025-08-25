@@ -15,14 +15,13 @@
 
             <% searchResult.data.forEach(item => { %>
             <!-- BOX -->
-            <form action="/" method="get">  
-                <input type="hidden" name="id" value="">
+            <form action="/view" method="post">  
+                <input type="hidden" name="id" value="<%=item.mal_id%>">
                 <button type="submit" class="anime_manga_box">
                         <img src="<%=item.images.jpg.image_url%>" class="anime_manga_image">
                         <p ><%= item.title %></p>
                 </button>
             </form>
-
             <% }); %>
         </div>
 

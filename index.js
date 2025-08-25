@@ -20,59 +20,72 @@ const API_URL = "https://api.jikan.moe/v4";
 // HOME
 //================
 app.get("/", async(req,res)=>{
-    try{
-        const result = await axios.get(API_URL+"/random"+currentType);
 
-        let result2 = result.data.data;
-
-        const data = result.data.data.url;
-        const title = result.data.data.titles;
-        const image = result.data.data.images.jpg.image_url;
-        const synopsis = result2.synopsis;
-        res.render("home.ejs",{
-            content: data,
-            titles:title, 
-            coverImage: image,
-            synopsis:synopsis
-        });
-        
-
-    } catch(error){
-        res.render("home.ejs", {content: error.response});
-    }
+    res.render("home.ejs");
 });
 
 // ================ 
-// RANDOM QUERY
+// QUERY
 // ================
+//[GET]
 app.get("/random", async(req,res)=>{
+
     try{
-        const result = await axios.get(API_URL+"/random"+currentType);
+        await randomviewer(res); 
+    } catch(error){
+        res.render("viewSelection.ejs", {content: error.response});
+    }
 
-        let result2 = result.data.data;
+});
 
-        const data = result.data.data;
-        const title = result.data.data.title;
-        const image = result.data.data.images.jpg.image_url;
-        const synopsis = result2.synopsis;
+//[POST]
+app.post("/view",async(req,res) =>{
+    try{
+        await selectedViewer(req,res);
+    } catch(error){
+        res.render("viewSelection.ejs", {content: error.response});
+    }
+});
 
-        res.render("viewSelection.ejs",{
+async function renderViewer(res,url) {
+    const result = await axios.get(url);
+    const result2 = result.data.data;
+
+    const data = result.data.data;
+    const title = result.data.data.title;
+    const image = result.data.data.images.jpg.image_url;
+    const synopsis = result2.synopsis;
+
+    res.render("viewSelection.ejs",{
             
             content: data,
             title:title, 
             coverImage: image,
             synopsis:synopsis
         });
+}
 
-    } catch(error){
-        res.render("viewSelection.ejs", {content: error.response});
-    }
-});
+
+async function selectedViewer(req,res) {
+
+    var data_id = req.body.id;
+    const url = `${API_URL}${currentType}/${data_id}`;
+    await renderViewer(res,url);
+
+}
+
+async function randomviewer(res){
+    const url = `${API_URL}/random${currentType}`;
+    await renderViewer(res,url);
+}
+
+
 
 //================
 // SEARCH QUERY
 //================
-//The search bar default
+
+//The search bar default [ GET ]
 app.get("/search", async(req,res)=>{
     try{
         const result = await axios.get(API_URL+"/random+"+currentType);
@@ -85,7 +98,7 @@ app.get("/search", async(req,res)=>{
 
 });
 
-//The search Result
+//The search Result [ POST ]
 app.post("/search", async(req,res)=>{
     var searchrQuery = req.body.searchquery;
     var page = req.body.page||1;
