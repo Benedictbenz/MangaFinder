@@ -90,10 +90,10 @@ app.get("/search", async(req,res)=>{
     try{
         const result = await axios.get(API_URL+"/random+"+currentType);
 
-        res.render("search.ejs");
+        res.render("Search.ejs");
 
     } catch(error){
-        res.render("search.ejs", {content: error.response});
+        res.render("Search.ejs", {content: error.response});
     }
 
 });
