@@ -90,10 +90,10 @@ app.get("/search", async(req,res)=>{
     try{
         const result = await axios.get(API_URL+"/random+"+currentType);
 
-        res.render("Search.ejs");
+        res.render("search.ejs");
 
     } catch(error){
-        res.render("Search.ejs", {content: error.response});
+        res.render("search.ejs", {content: error.response});
     }
 
 });
@@ -127,7 +127,7 @@ app.post("/search", async(req,res)=>{
         });
 
     }catch(err){
-        res.render("search.ejs",{content: error.response});
+        res.render("search.ejs",{content: err.response});
     }
 });
 
