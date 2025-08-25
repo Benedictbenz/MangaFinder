@@ -16,6 +16,9 @@ const currentType = type1;
 
 const API_URL = "https://api.jikan.moe/v4";
 
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 //================ 
 // HOME
 //================
